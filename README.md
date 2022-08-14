@@ -69,6 +69,15 @@ I2CロータリエンコーダはATTiny202を利用したロータリエンコ�
 <br><br>
 
 
+## メリット、デメリット
+■　メリット<br>
+　・マイコンのI/Oを消費しない<br>
+　・アドレス変えていけば割といっぱい付けられる<br>
+<br>
+■　デメリット<br>
+　・実装するICと消費電力が増える<br>
+　<br><br>
+
 ## 開発環境の作り方
 
 <a href="https://ameblo.jp/pta55/entry-12654450554.html" target="_blank">https://ameblo.jp/pta55/entry-12654450554.html</a>
