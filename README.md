@@ -13,7 +13,7 @@ I2CロータリエンコーダはATTiny202を利用したロータリエンコ�
 
 ## ATTiny202 ピン
 
-<img src="/images/connect.png" height="900">
+<img src="/images/connect.png">
 
 <table>
   <tr>
