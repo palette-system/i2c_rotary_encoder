@@ -98,6 +98,11 @@ I2Cでアドレスを指定して1バイトリクエストするだけで取得�
 ```
 　<br><br>
 
+## AZ-CORE、えむごっち等に接続する場合のAZTOOL手順
+
+https://twitter.com/4py1/status/1559090793159458816
+https://twitter.com/4py1/status/1559088312589365248
+
 ## ATTiny202 開発環境の作り方
 
 <a href="https://ameblo.jp/pta55/entry-12654450554.html" target="_blank">https://ameblo.jp/pta55/entry-12654450554.html</a>
