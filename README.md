@@ -6,7 +6,12 @@
 
 ## 説明
 
-I2CロータリエンコーダはATTiny202を利用したロータリエンコーダの操作をI2C越しに読み込みをするための基板です。
+I2CロータリエンコーダはATTiny202を利用したロータリエンコーダの操作をI2C越しに読み込みをするための基板です。<br>
+(販売はDIP変換基板と、下記ファームウェアを書き込んだATTiny202を販売します)<br>
+<br>
+
+ファームウェアソース<br>
+<a href="https://github.com/palette-system/i2c_rotary_encoder/edit/main/software/i2c_rotary_encorder/i2c_rotary_encorder.ino" target="_blank">software/i2c_rotary_encorder/i2c_rotary_encorder.ino</a>
 
 <br><br>
 
@@ -69,7 +74,31 @@ I2CロータリエンコーダはATTiny202を利用したロータリエンコ�
 <br><br>
 
 
-## 開発環境の作り方
+## メリット、デメリット
+■　メリット<br>
+　・マイコンのI/Oを消費しない<br>
+　・アドレス変えていけば割といっぱい付けられる<br>
+<br>
+■　デメリット<br>
+　・実装するICと消費電力が増える<br>
+　<br><br>
+
+## 読み込み方
+I2Cでアドレスを指定して1バイトリクエストするだけで取得できます。<br>
+最後にデータ取得した時から現在までにロータリエンコーダの操作があった場合に該当のビットが１になって帰ってきます。<br>
+一度取得するとまた０になり、ロータリエンコーダが操作されるまで０を取得します。<br>
+```
+  uint8_t r;
+  Wire.requestFrom(0x45, 1); // 指定したアドレスのATTiny202に1バイト分データ取得要求
+  r = Wire.read(); // 1バイトデータ受け取る
+  if (r & 0x08) # ロータリエンコーダ０左回り
+  if (r & 0x04) # ロータリエンコーダ０右回り
+  if (r & 0x02) # ロータリエンコーダ１左回り
+  if (r & 0x01) # ロータリエンコーダ１右回り
+```
+　<br><br>
+
+## ATTiny202 開発環境の作り方
 
 <a href="https://ameblo.jp/pta55/entry-12654450554.html" target="_blank">https://ameblo.jp/pta55/entry-12654450554.html</a>
 <br><br>
