@@ -41,18 +41,18 @@ I2CロータリエンコーダはATTiny202を利用したロータリエンコ�
   <tr>
     <td>2</td>
     <td>PA6</td>
-    <td>rotary0_A</td>
+    <td>rotary1_B</td>
     <td>7</td>
     <td>PA3</td>
-    <td>rotary1_A</td>
+    <td>rotary0_B</td>
   </tr>
   <tr>
     <td>3</td>
     <td>PA7</td>
-    <td>rotary0_B</td>
+    <td>rotary1_A</td>
     <td>6</td>
     <td>PA0</td>
-    <td>rotary1_B</td>
+    <td>rotary0_A</td>
   </tr>
   <tr>
     <td>4</td>
