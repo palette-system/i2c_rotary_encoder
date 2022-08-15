@@ -6,7 +6,7 @@
 #include <Wire.h>
 #include <avr/pgmspace.h> 
 
-// 本体のアドレス
+// ATTiny202 本体のアドレス
 #define I2C_SLAVE_ADD 0x45
 
 uint8_t key_input = 0x00;
@@ -18,10 +18,10 @@ void requestEvent();
 
 void setup() {
     // ロータリーエンコーダ読み込みピンの初期化
-    pinMode(A0, INPUT_PULLUP);
-    pinMode(A3, INPUT_PULLUP);
     pinMode(A7, INPUT_PULLUP);
     pinMode(A6, INPUT_PULLUP);
+    pinMode(A0, INPUT_PULLUP);
+    pinMode(A3, INPUT_PULLUP);
   
     // I2C スレーブ初期化
     Wire.begin(I2C_SLAVE_ADD);
@@ -41,12 +41,12 @@ void loop() {
 
   // 今回分を読み取り
   key_input = 0x00;
-  if (digitalRead(A0)) key_input |= 0x01;
-  if (digitalRead(A3)) key_input |= 0x02;
-  if (digitalRead(A6)) key_input |= 0x04;
-  if (digitalRead(A7)) key_input |= 0x08;
+  if (digitalRead(A6)) key_input |= 0x01;
+  if (digitalRead(A7)) key_input |= 0x02;
+  if (digitalRead(A0)) key_input |= 0x04;
+  if (digitalRead(A3)) key_input |= 0x08;
 
-  // ロータリーエンコーダー１
+  // ロータリーエンコーダー０
   if ((old_input & 0x03) == 0x03) { // 前の読み取りが AB両方ONだった
       if ((key_input & 0x01) && !(key_input & 0x02)) { // 今回Aのみ
           send_input |= 0x01;
@@ -55,7 +55,7 @@ void loop() {
       }
   }
 
-  // ロータリーエンコーダー２
+  // ロータリーエンコーダー１
   if ((old_input & 0x0c) == 0x0c) { // 前の読み取りが AB両方ONだった
       if ((key_input & 0x04) && !(key_input & 0x08)) { // 今回Aのみ
           send_input |= 0x04;
